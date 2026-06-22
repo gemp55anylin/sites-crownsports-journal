@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 专业体育赛事信息平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafafa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1e2a3a;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 5rem;
+        }
+
+        /* hero section */
+        .hero {
+            border-bottom: 1px solid #eaeef2;
+            padding-bottom: 2.5rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #6b7b8c;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #0b1a26;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #3d4e5e;
+            max-width: 600px;
+        }
+
+        /* background note */
+        .backnote {
+            background: #f0f3f6;
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            margin-bottom: 2.8rem;
+            font-size: 0.9rem;
+            color: #2b3d4e;
+            position: relative;
+        }
+
+        .backnote strong {
+            font-weight: 600;
+            color: #0b1a26;
+        }
+
+        .backnote::before {
+            content: "▍";
+            font-size: 1.2rem;
+            color: #3f6b8c;
+            margin-right: 0.4rem;
+        }
+
+        /* section card style */
+        .section-card {
+            margin-bottom: 3rem;
+        }
+
+        .section-card h2 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.8rem;
+            color: #0f212f;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-card h2 .num {
+            display: inline-block;
+            background: #d6dee6;
+            color: #1e2a3a;
+            font-size: 0.7rem;
+            font-weight: 600;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.5rem;
+            margin-right: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        .section-card p {
+            margin-bottom: 1rem;
+            color: #2f4052;
+            font-size: 0.975rem;
+        }
+
+        .section-card ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .section-card li {
+            padding: 0.3rem 0 0.3rem 1.3rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #2f4052;
+        }
+
+        .section-card li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #7f95ab;
+        }
+
+        /* inline link style */
+        a {
+            color: #1f4b6e;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        a:hover {
+            border-bottom-color: #1f4b6e;
+        }
+
+        /* footer visit hint */
+        .visit-hint {
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8ed;
+            font-size: 0.95rem;
+            color: #3c5367;
+        }
+
+        .visit-hint p {
+            margin-bottom: 0.3rem;
+        }
+
+        .visit-hint .tagline {
+            font-size: 0.8rem;
+            color: #6a7f90;
+            letter-spacing: 0.02em;
+        }
+
+        /* responsive */
+        @media (max-width: 500px) {
+            .page {
+                padding: 2rem 1.2rem 4rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .backnote {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            .section-card h2 {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- hero 横幅 -->
+        <div class="hero">
+            <div class="hero-label">专题 · 信息入口</div>
+            <h1>赛事数据与导航中枢</h1>
+            <p>对于关注体育竞技与数据服务的用户而言，一个稳定、清晰的访问起点，往往决定了后续浏览的连贯性与效率。</p>
+        </div>
+
+        <!-- 背景说明 -->
+        <div class="backnote">
+            <strong>背景说明</strong> 当前网络环境中，体育资讯与数据平台的入口形态多样。门户需兼顾信息密度与路径清晰度，<a href="https://portal-home-sporttery.com">竞彩网</a> 正是在此类需求下建立的聚合式首页，提供赛事导航与基础数据索引。
+        </div>
+
+        <!-- 三段自然介绍 -->
+        <div class="section-card">
+            <h2><span class="num">1</span> 结构化的起始页</h2>
+            <p>平台首页以模块化方式组织内容，将赛事列表、数据概览与常用功能入口分区呈现。用户无需在多层菜单间反复跳转，即可在单一页面内快速定位核心模块。这种布局降低了认知负荷，尤其适合需要频繁比对多场赛事的用户。</p>
+            <p>除主要导航外，首页同样承载了当日的重点赛事提醒与基础统计摘要，使得页面在作为“入口”的同时，也具备一定信息预览价值。</p>
+        </div>
+
+        <div class="section-card">
+            <h2><span class="num">2</span> 数据服务的连贯性</h2>
+            <p>从首页进入具体赛事页面或分析工具时，页面间的数据字段与交互逻辑保持统一标准。这种设计意味着用户在对某一联赛或队伍进行深度浏览时，无需重新适应不同的信息结构。对于需要长期跟踪数据的用户而言，连贯的体验是效率的基础。</p>
+            <ul>
+                <li>分类导航覆盖主流赛事与杯赛</li>
+                <li>数据看板支持基础筛选与排序</li>
+                <li>搜索与历史记录辅助快速回溯</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2><span class="num">3</span> 索引与访问逻辑</h2>
+            <p>作为官方推荐的访问起点，<a href="https://portal-home-sporttery.com">竞彩网</a> 页面本身即构成一个索引节点。其定位并非替代具体赛事分析页面，而是提供一条清晰、直达的路径，帮助用户从零散信息中快速建立浏览框架。</p>
+            <p>在信息碎片化的背景下，一个结构稳定的首页能够减少不必要的跳转折返，使得访问行为本身更加高效。这也是该页面在整体架构中所扮演的核心角色。</p>
+        </div>
+
+        <!-- 页尾访问提示 -->
+        <div class="visit-hint">
+            <p>如果你希望将 <a href="https://portal-home-sporttery.com">竞彩网</a> 设为日常浏览的固定起点，它提供的是结构化的赛事导航与数据索引服务。</p>
+            <p class="tagline">首页作为信息门户，不参与任何实时交易或结果判定，仅用于辅助访问与数据查阅。</p>
+        </div>
+    </div>
+</body>
+</html>
