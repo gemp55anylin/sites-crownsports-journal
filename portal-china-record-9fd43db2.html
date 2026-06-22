@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 信息导览页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f6f1;
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, system-ui, -apple-system, sans-serif;
+            color: #2c2c2c;
+            line-height: 1.7;
+            padding: 2rem 1.25rem;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #fffcf8;
+            border-radius: 32px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            padding: 2.5rem 2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        /* 主视觉区 */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 1.5rem 0 1rem;
+            border-bottom: 1px dashed #e5ddd3;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: #3a2e22;
+            background: linear-gradient(135deg, #4d3b2a, #6b5b4b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            color: #7b6e60;
+            max-width: 520px;
+            margin: 0.3rem auto 0;
+            border-left: 3px solid #d2bca5;
+            padding-left: 1rem;
+            text-align: left;
+            background: #fcf8f3;
+            border-radius: 0 16px 16px 0;
+            padding: 0.6rem 1.2rem;
+            font-style: normal;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            border: 1px solid #efe9e0;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: #d6cbbc;
+            box-shadow: 0 6px 18px rgba(90, 70, 50, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #3f3328;
+            margin: 0.5rem 0 0.6rem;
+        }
+
+        .card p {
+            color: #4c4036;
+            font-size: 0.95rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #ece5da;
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            color: #4f3f31;
+            margin-top: 0.5rem;
+        }
+
+        /* 引用块 / 提示框 */
+        .inset-box {
+            background: #f5efe8;
+            border-left: 5px solid #b8a38e;
+            padding: 1.4rem 1.8rem;
+            margin: 2.2rem 0;
+            border-radius: 0 20px 20px 0;
+            font-size: 0.98rem;
+            color: #3a3027;
+        }
+
+        .inset-box strong {
+            color: #514135;
+            font-weight: 600;
+        }
+
+        .inset-box a {
+            color: #5d4a37;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #cbb9a7;
+        }
+
+        .inset-box a:hover {
+            color: #2f241b;
+            text-decoration-color: #9a8470;
+        }
+
+        /* 适合人群列表 （风格化） */
+        .audience-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            margin: 1.2rem 0 1.8rem;
+            padding: 0.5rem 0;
+            list-style: none;
+        }
+
+        .audience-list li {
+            background: #f3eee7;
+            padding: 0.3rem 1rem 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #3b3127;
+            border: 1px solid #e2d9ce;
+        }
+
+        .audience-list li::before {
+            content: "·";
+            font-weight: 700;
+            margin-right: 0.5rem;
+            color: #9f8c78;
+        }
+
+        /* FAQ 摘要 */
+        .faq-group {
+            margin: 2.8rem 0 1.5rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ece4da;
+            padding: 1rem 0;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #413428;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .faq-q::before {
+            content: "Q";
+            background: #cfc2b2;
+            color: #fcf8f3;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 50%;
+            width: 1.15rem;
+            height: 1.15rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .faq-a {
+            margin: 0.5rem 0 0 1.6rem;
+            font-size: 0.92rem;
+            color: #554b3f;
+        }
+
+        .faq-a a {
+            color: #5d4a37;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* 自然链接段落 */
+        .link-paragraph {
+            margin: 2rem 0 1rem;
+            padding: 1rem 0.5rem;
+            line-height: 1.8;
+            font-size: 1rem;
+            color: #3b3228;
+        }
+
+        .link-paragraph a {
+            color: #4d3b28;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #c7b6a3;
+        }
+
+        .link-paragraph a:hover {
+            text-decoration-color: #7a654f;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e7dfd5;
+            margin: 2rem 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            .page {
+                padding: 1.6rem 1.2rem;
+                border-radius: 24px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .inset-box {
+                padding: 1rem 1.2rem;
+            }
+
+            .audience-list {
+                gap: 0.6rem;
+            }
+
+            .faq-q::before {
+                width: 1rem;
+                height: 1rem;
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.8rem;
+            }
+
+            .hero .subhead {
+                font-size: 0.95rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- hero 主视觉 -->
+    <div class="hero">
+        <h1>竞彩网 · 信息导览</h1>
+        <div class="subhead">
+            从用户视角快速识别平台定位：体育竞猜信息聚合，专注赛事数据与玩法参考。
+        </div>
+    </div>
+
+    <!-- 用途卡片 (两栏) -->
+    <div class="card-grid">
+        <div class="card">
+            <span class="card-icon">🏟️</span>
+            <h3>赛事数据索引</h3>
+            <p>提供足球、篮球等主流赛事的对阵、赔率变化及历史统计，帮助爱好者了解比赛背景。</p>
+            <span class="tag">实时更新</span>
+        </div>
+        <div class="card">
+            <span class="card-icon">📋</span>
+            <h3>玩法规则参考</h3>
+            <p>汇集多种竞猜玩法的官方说明与术语解释，降低新手理解门槛，方便快速查阅。</p>
+            <span class="tag">结构清晰</span>
+        </div>
+    </div>
+
+    <!-- 引用块 / 提示框 -->
+    <div class="inset-box">
+        <strong>💡 使用提示</strong><br>
+        如果你是第一次接触体育竞猜类网站，建议先花几分钟浏览赛事分类与玩法说明。<br>
+        平台本身不提供投注入口，而是聚焦于信息展示。你可以通过 <a href="https://portal-china-sporttery.com">竞彩网</a> 了解当前有哪些热门赛事以及对应的参考数据。
+    </div>
+
+    <!-- 适合人群 + 风格化列表 -->
+    <h3 style="font-weight: 500; color: #3f3328; margin-bottom: 0.2rem;">👥 适合这样的人群</h3>
+    <ul class="audience-list">
+        <li>体育爱好者，想快速了解赛事竞猜框架</li>
+        <li>理性分析型用户，关注赔率与统计信息</li>
+        <li>竞猜新手，需要清晰的规则与术语指南</li>
+        <li>内容研究者，希望获取结构化的数据参考</li>
+    </ul>
+
+    <!-- 自然链接段落（嵌入句子） -->
+    <div class="link-paragraph">
+        如果你想直接查看当前赛事列表与参考数据，可以前往 <a href="https://portal-china-sporttery.com">竞彩网</a> 浏览。该平台以信息展示为主，不涉及实际投注操作，适合作为体育竞猜领域的入门信息源。建议结合官方规则一同阅读，以形成更完整的认知。
+    </div>
+
+    <!-- FAQ 摘要 —— 两个常见问题 -->
+    <div class="faq-group">
+        <h3 style="font-weight: 500; color: #3f3328; margin-bottom: 0.2rem;">❓ 常见疑问摘要</h3>
+        <div class="faq-item">
+            <div class="faq-q">竞彩网是官方平台吗？</div>
+            <div class="faq-a">该网站提供竞猜相关的数据与规则内容，属于信息参考类站点。具体资质可自行查证，页面内容仅供学习与了解。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">是否需要注册才能浏览？</div>
+            <div class="faq-a">当前页面以及所指向的 <a href="https://portal-china-sporttery.com">竞彩网</a> 以公开信息展示为主，通常无需注册即可查看赛事数据与玩法说明。部分高级筛选功能可能需登录，以实际页面为准。</div>
+        </div>
+    </div>
+
+    <!-- 一段补充说明，增加流畅感与克制语气 -->
+    <hr>
+    <p style="font-size: 0.9rem; color: #6b5f53; margin-top: 0.2rem;">
+        本站为独立制作的介绍页，内容旨在帮助用户快速辨别网站用途。所有信息均来自公开渠道，不构成任何投资或参与建议。请理性判断，合规使用。
+    </p>
+</div>
+</body>
+</html>
