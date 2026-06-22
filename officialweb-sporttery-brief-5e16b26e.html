@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料索引 · 竞彩网知识库 | 信息整理与导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8fafc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.65;
+            padding: 2rem 1.5rem 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-top: 0.8rem;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-top: 2.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e293b;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 1.8rem;
+            margin-bottom: 0.6rem;
+            color: #334155;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #334155;
+        }
+
+        .meta-line {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* 卡片——目录感 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin: 1.8rem 0 2.2rem;
+        }
+
+        .card-item {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+            border-left: 4px solid #3b82f6;
+            transition: background 0.1s ease;
+        }
+
+        .card-item:hover {
+            background: #f1f5f9;
+        }
+
+        .card-title {
+            font-weight: 500;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.2rem;
+            color: #0f172a;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 0.2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.1rem 0.5rem;
+            border-radius: 30px;
+            margin-left: 0.4rem;
+            vertical-align: middle;
+        }
+
+        /* 提示区 */
+        .tip-box {
+            background: #f1f5f9;
+            border-radius: 14px;
+            padding: 1.4rem 1.6rem;
+            margin: 2.2rem 0 1.8rem;
+            border: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+            color: #1e293b;
+        }
+
+        .tip-box strong {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        /* 相关信息区 */
+        .info-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.6rem 0 2.5rem;
+            padding: 1.2rem 1.4rem;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .info-item {
+            flex: 1 1 180px;
+            font-size: 0.95rem;
+            padding: 0.4rem 0;
+        }
+
+        .info-item .label {
+            display: block;
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 0.2rem;
+        }
+
+        .info-item .value {
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        .faq-mini {
+            margin-top: 2rem;
+            padding-top: 0.8rem;
+            border-top: 1px dashed #d1d9e6;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            margin: 1rem 0 0.2rem;
+            color: #0f172a;
+        }
+
+        .faq-a {
+            color: #475569;
+            font-size: 0.95rem;
+            padding-left: 0.5rem;
+            margin-bottom: 1rem;
+            border-left: 2px solid #cbd5e1;
+            padding-left: 1rem;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.15);
+            transition: border-color 0.1s;
+        }
+
+        a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        .footer-note {
+            margin-top: 4rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 500px) {
+            body {
+                padding: 1.5rem 1rem 3rem;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+            .card-item {
+                padding: 1rem 1.2rem;
+            }
+            .tip-box {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <h1>资料索引 · 竞彩知识库</h1>
+        <div class="meta-line">信息整理与分类导航 · 版本 2025.04</div>
+    </header>
+
+    <p>
+        本页围绕 <a href="https://officialweb-sporttery.com">竞彩网</a> 的公开内容与常见资料维度，整理了一份结构化的知识索引。
+        从玩法说明、数据查询到规则备忘，以下卡片区域概括了主要信息类别，便于快速定位和查阅。
+    </p>
+
+    <!-- 目录感布局：卡片式分类 -->
+    <h2>内容分类索引</h2>
+    <div class="card-grid">
+        <div class="card-item">
+            <div class="card-title">📄 玩法与规则手册 <span class="badge">基础</span></div>
+            <div class="card-desc">涵盖竞彩足球、篮球的玩法类型、奖金计算原则、无效场次处理等官方规则说明。</div>
+        </div>
+        <div class="card-item">
+            <div class="card-title">📊 实时数据与赔率</div>
+            <div class="card-desc">比赛赔率变动、固定奖金数值、赛事状态更新等动态数据查询路径参考。</div>
+        </div>
+        <div class="card-item">
+            <div class="card-title">📋 公告与政策备忘</div>
+            <div class="card-desc">涉及销售时间调整、重大赛事安排、业务政策通知等历史存档与最新条目。</div>
+        </div>
+        <div class="card-item">
+            <div class="card-title">🔍 常见术语与计算</div>
+            <div class="card-desc">让球、胜平负、混合过关、奖金优化等术语解析及简易计算示例。</div>
+        </div>
+    </div>
+
+    <!-- 说明区 -->
+    <h2>索引说明</h2>
+    <p>
+        本知识库仅作为资料整理与信息导航，所有内容均引用自 <a href="https://officialweb-sporttery.com">竞彩网</a> 已公开的资料片段。
+        索引分类基于常见查询习惯划分，不替代官方最新公告。如需核对规则细节或查看实时数据，建议直接访问源站对应页面。
+    </p>
+
+    <!-- 提示区 -->
+    <div class="tip-box">
+        <strong>📌 查阅提示</strong><br>
+        · 规则类文档有时会随赛季或政策微调，请注意页面顶部的更新日期。<br>
+        · 赔率数据以实际出票时刻为准，本索引仅说明数据位置，不提供预测或建议。<br>
+        · 如遇赛事延期或中断，请优先查阅官方发布的处理公告。
+    </div>
+
+    <!-- 相关信息区 -->
+    <h2>相关信息</h2>
+    <div class="info-block">
+        <div class="info-item">
+            <span class="label">📅 信息覆盖时段</span>
+            <span class="value">2024–2025 赛季主要联赛及杯赛</span>
+        </div>
+        <div class="info-item">
+            <span class="label">📁 文档格式</span>
+            <span class="value">HTML 页面 / PDF 规则摘要 / 表格</span>
+        </div>
+        <div class="info-item">
+            <span class="label">🔗 外部参考</span>
+            <span class="value">联赛官网 · 数据服务商 · 体育媒体</span>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 (精简) -->
+    <div class="faq-mini">
+        <h3 style="border-bottom: none; margin-top: 0.2rem; font-weight: 500;">常见问题摘要</h3>
+        <div class="faq-q">Q：如何确认某场比赛的奖金是否固定？</div>
+        <div class="faq-a">在 <a href="https://officialweb-sporttery.com">竞彩网</a> 的“受注赛程”页面中，每场比赛右侧会显示当前固定奖金数值（赛前及赛中都可能变化）。</div>
+
+        <div class="faq-q">Q：过关投注的奖金计算逻辑是什么？</div>
+        <div class="faq-a">单注奖金 = 所选场次固定奖金相乘 × 2元 × 倍数。具体可查阅“玩法说明”章节中的计算示例。</div>
+
+        <div class="faq-q">Q：如果比赛取消或中断，如何处理？</div>
+        <div class="faq-a">根据官方规则，若比赛在有效时间内未完成，相关场次按“无效场次”处理，对应的固定奖金按 1 计算。详细条款请见规则手册。</div>
+    </div>
+
+    <div class="footer-note">
+        © 索引页 · 内容整理自公开资料 · 不构成任何投资或参与建议
+    </div>
+</div>
+</body>
+</html>
